@@ -2,54 +2,40 @@ import { readFileSync } from "node:fs";
 
 const input = readFileSync("input.txt", "utf-8");
 
-var reports = [];
 var safe = 0;
 
-// 697 too low
+// 699 too low
+// 958 too high
+
+/* Problematic Case:
+2
+77 80 81 84 85 86 86 90 is unsafe
+*/ 
 
 input.split("\n").forEach(e => {
   const report = e.split(" ");
-  reports.push(report);
-  var last = report[0];
-  var direction = 0;
-  var lastWasUnsafe = false;
-  for (let i = 1; i < report.length; i++) {
+
+  var unsafeOperations = 0;
+  const directionsCount = [0,0]
+
+  var last;
+  var lastDir;
+  const entryCount = report.length;
+
+  for (let i = 0; i < entryCount; i++) {
     const entry = report[i];
-    const diff = Math.abs(entry - last);
-    const dir = (entry - last > 0)?1:(entry - last == 0)?0:-1;
-    if (direction == 0 && dir != 0) {
-      direction = dir;
-    }
-    if (dir == 0) {
-      if (!lastWasUnsafe) {
-        console.log(last + " + " + entry + "deemed unsafe");
-        lastWasUnsafe = true;
+    if (i != 0) {
+      if (error) {
+        i = 0;
       } else {
-        console.log(e+" is unsafe because "+last+" = "+entry);
-        break;
-      }
-    } else if ( diff < 1 || diff > 3 ) {
-      if (!lastWasUnsafe) {
-        console.log(last + " + " + entry + "deemed unsafe");
-        lastWasUnsafe = true;
-      } else {
-        console.log(e+" is unsafe because difference is "+diff);
-        break;
-      }
-    } else if ( direction != dir) {
-      if (!lastWasUnsafe) {
-        console.log(last + " + " + entry + "deemed unsafe");
-        lastWasUnsafe = true;
-      } else {
-        console.log(e+" is unsafe because direction was "+direction+" and is now "+dir);
-        break;
       }
     }
-    if (i == report.length-1) {
-      console.log(e+" is safe");
-      safe++;
-    }
-    last = entry;
+    last = entry
+  }
+
+
+  if (unsafeOperations <= 1) {
+    safe++;
   }
 });
 
