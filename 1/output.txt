@@ -1,0 +1,8 @@
+
+> one@1.0.0 start
+> node index.js
+
+Similarity Score:
+20719933
+Total Distance:
+2164381

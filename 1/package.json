@@ -1,0 +1,16 @@
+{
+  "name": "one",
+  "version": "1.0.0",
+  "description": "first door",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "watch": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "lennartjakob",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

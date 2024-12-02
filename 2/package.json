@@ -1,0 +1,18 @@
+{
+  "name": "one",
+  "version": "1.0.0",
+  "description": "first door",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "onew": "nodemon index.js",
+    "one": "node index.js >> output1.txt",
+    "twow": "nodemon parttwo.js",
+    "two": "node parttwo.js >> output2.txt"
+  },
+  "author": "lennartjakob",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
